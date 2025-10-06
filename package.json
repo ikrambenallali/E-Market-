@@ -1,0 +1,29 @@
+{
+  "name": "e-market-",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ikrambenallali/E-Market-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ikrambenallali/E-Market-/issues"
+  },
+  "homepage": "https://github.com/ikrambenallali/E-Market-#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
