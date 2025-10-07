@@ -1,4 +1,7 @@
 require('dotenv').config();
+const userRoutes = require('./routes/userRoutes');
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -16,6 +19,8 @@ mongoose.connect(process.env.MONGO_URI)
 app.get('/', (req, res) => {
   res.send('Hello MongoDB + Express 👋');
 });
+app.use('/users', userRoutes);
+
 
 // Démarrage du serveur
 const PORT = process.env.PORT || 3000;
