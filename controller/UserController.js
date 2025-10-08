@@ -1,8 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require("bcryptjs");
-
-
-
+// ==========================================gestion des utilisateurs=============================================
 // creer un utilisateur
 async function createUser(req, res) {
     const { fullname, email, password, role } = req.body;
@@ -54,7 +52,7 @@ async function deleteUser(req, res) {
 // get user by id
 async function getUserById(req, res) {
     // destructuration0.
-    
+
     const { id } = req.params;
     try {
         const user = await User.findById(id);
