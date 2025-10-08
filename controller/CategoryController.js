@@ -37,4 +37,4 @@ async function deleteCategory(req ,res){
         res.status(500).json({ error: 'Failed to delete category' });
     }
 }
-module.exports = {createCategory, getAllCategories};
+module.exports = {createCategory, getAllCategories , deleteCategory};
