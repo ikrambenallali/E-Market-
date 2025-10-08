@@ -1,6 +1,9 @@
 const User = require('../models/User');
 const bcrypt = require("bcryptjs");
 
+
+
+// creer un utilisateur
 async function createUser(req, res) {
     const { fullname, email, password, role } = req.body;
     if (!fullname || !email || !password) {
@@ -22,6 +25,7 @@ async function createUser(req, res) {
     }
 }
 
+// lister tous les utilisateurs
 async function getAllUsers(req, res) {
     try {
         const users = await User.find();
@@ -31,6 +35,8 @@ async function getAllUsers(req, res) {
         res.status(500).json({ error: 'Failed to fetch users' });
     }
 }
+
+// supprimer un utilisateur
 async function deleteUser(req, res) {
     const { id } = req.params;
    try {
