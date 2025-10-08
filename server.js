@@ -25,6 +25,7 @@ app.use('/users', userRoutes);
 // Démarrage du serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Serveur lancé sur le port ${PORT}`);
+  // console.log(`🚀 Serveur lancé sur le port ${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
 
