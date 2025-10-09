@@ -26,6 +26,10 @@ const productSchema = new mongoose.Schema(
             ref: "Category",
             required: [true, "La catégorie est obligatoire"],
         },
+        isDeleted: {
+            type: Boolean,
+            default: false,
+        },
 
         imageUrl: {
             type: String,
