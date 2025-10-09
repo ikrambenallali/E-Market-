@@ -1,10 +1,10 @@
 const Category = require('../models/Category');
 // ==========================================gestion des categories=============================================
 // creer une categorie
-async function createCategory(req ,res){
-    const {name , description} = req.body;
-    try{
-        const newCategory =await Category.create({name , description});
+async function createCategory(req, res) {
+    const { name, description } = req.body;
+    try {
+        const newCategory = await Category.create({ name, description });
         res.status(201).json(newCategory);
     } catch (error) {
         console.error('Error creating category:', error);
@@ -24,8 +24,8 @@ async function getAllCategories(req, res) {
 }
 
 // supprimer une categorie
-async function deleteCategory(req ,res){
-    const {id} = req.params;
+async function deleteCategory(req, res) {
+    const { id } = req.params;
     try {
         const deletedCategory = await Category.findByIdAndDelete(id);
         if (!deletedCategory) {
@@ -37,4 +37,19 @@ async function deleteCategory(req ,res){
         res.status(500).json({ error: 'Failed to delete category' });
     }
 }
-module.exports = {createCategory, getAllCategories , deleteCategory};
+
+// modifier category
+async function updateCategory(req, res) {
+    const { id } = req.params;
+    const { name, description } = req.body;
+    try {
+        const updatedCategory = await Category.findByIdAndUpdate(id, { name, description }, { new: true });
+        if (!updatedCategory) {
+            return res.status(404).json({ error: 'Category not found' });
+        } res.status(200).json(updatedCategory);
+    } catch (error) {
+        console.error('Error updating category:', error);
+        res.status(500).json({ error: 'Failed to update category' });
+    }
+}
+module.exports = { createCategory, getAllCategories, deleteCategory, updateCategory };

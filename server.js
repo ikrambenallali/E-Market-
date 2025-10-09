@@ -1,6 +1,6 @@
 require('dotenv').config();
 const userRoutes = require('./routes/userRoutes');
-// const productRoutes = require('./routes/productRoutes');
+const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 
 
@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
   res.send('Hello MongoDB + Express 👋');
 });
 app.use('/users', userRoutes);
-// app.use('/products', productRoutes);
+app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 
 
