@@ -62,4 +62,20 @@ async function getProductById(req, res) {
     }
 }
 
-module.exports = { createProduct, getAllProducts, deleteProduct , restoreProduct, getProductById };
+// update product
+async function updateProduct(req, res) {
+    const { id } = req.params;
+    const { title, description, price, stock, category, imageUrl } = req.body;
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(id, { title, description, price, stock, category, imageUrl }, { new: true });
+        if (!updatedProduct || updatedProduct.isDeleted) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        res.status(200).json(updatedProduct);
+    } catch (error) {
+        console.error('Error updating product:', error);
+        res.status(500).json({ error: 'Failed to update product' });
+    }
+}
+
+module.exports = { createProduct, getAllProducts, deleteProduct , restoreProduct, getProductById, updateProduct };
