@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require("bcryptjs");
 // ==========================================gestion des utilisateurs=============================================
+
 // creer un utilisateur
 async function createUser(req, res) {
     const { fullname, email, password, role } = req.body;

@@ -2,6 +2,7 @@ require('dotenv').config();
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
+const swaggerDocs = require('./swagger');
 
 
 const express = require('express');
@@ -25,7 +26,7 @@ app.use('/users', userRoutes);
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 
-
+swaggerDocs(app);
 // Démarrage du serveur
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
