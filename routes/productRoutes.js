@@ -1,5 +1,5 @@
 const express = require('express');
-const {createProduct,getAllProducts,deleteProduct,restoreProduct,getProductById,updateProduct} = require('../controller/ProductController');
+const {createProduct,getAllProducts,deleteProduct,restoreProduct,getProductById,updateProduct ,searchProducts} = require('../controller/ProductController');
 const router = express.Router();
 
 /**
@@ -185,5 +185,7 @@ router.delete('/deleteProduct/:id', deleteProduct);
  *         description: Erreur serveur lors de la récupération
  */
 router.get('/restoreProduct', restoreProduct);
+router.get('/search', searchProducts);
+
 
 module.exports = router;

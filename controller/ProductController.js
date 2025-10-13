@@ -78,4 +78,21 @@ async function updateProduct(req, res) {
     }
 }
 
-module.exports = { createProduct, getAllProducts, deleteProduct , restoreProduct, getProductById, updateProduct };
+async function searchProducts(req, res) {
+  const query = req.query.q; // Exemple: /api/products/search?q=iphone
+
+  try {
+    const results = await Product.find({
+      $or: [
+        { title: { $regex: query, $options: "i" } }, // "i" = insensible à la casse
+        { description: { $regex: query, $options: "i" } }
+      ]
+    });
+
+    res.status(200).json(results);
+  } catch (error) {
+    console.error('Erreur lors de la recherche:', error);
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+}
+module.exports = { createProduct, getAllProducts, deleteProduct , restoreProduct, getProductById, updateProduct ,searchProducts };
