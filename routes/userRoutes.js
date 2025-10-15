@@ -2,10 +2,15 @@ const express = require('express');
 const { createUser, getAllUsers, deleteUser, getUserById } = require('../controller/UserController');
 const validationMiddleware = require("../middlewares/validation");
 const { userSchema } = require("../middlewares/schema");
+const logger = require('../middlewares/logger');
+const errorHandler = require('../middlewares/errorHandler');
+const notFound = require('../middlewares/notFound');
 
 const validator = new validationMiddleware();
 const router = express.Router();
-
+router.use(logger);
+router.use(errorHandler);
+router.use(notFound);
 /**
  * @swagger
  * components:

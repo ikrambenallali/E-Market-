@@ -1,7 +1,13 @@
 const express = require('express');
 const {createProduct,getAllProducts,deleteProduct,restoreProduct,getProductById,updateProduct ,searchProducts} = require('../controller/ProductController');
 const router = express.Router();
+const logger = require('../middlewares/logger');
 
+const errorHandler = require('../middlewares/errorHandler');
+const notFound = require('../middlewares/notFound');
+router.use(logger);
+router.use(errorHandler);
+router.use(notFound);
 /**
  * @swagger
  * components:

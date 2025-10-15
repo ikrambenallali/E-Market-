@@ -78,11 +78,13 @@ async function updateProduct(req, res) {
     }
 }
 
+// search products
 async function searchProducts(req, res) {
   const query = req.query.q; // Exemple: /api/products/search?q=iphone
 
   try {
     const results = await Product.find({
+        // la condition est vraie si au moins une des sous-conditions est vraie
       $or: [
         { title: { $regex: query, $options: "i" } }, // "i" = insensible à la casse
         { description: { $regex: query, $options: "i" } }
